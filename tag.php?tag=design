@@ -1,0 +1,45 @@
+<?php
+require_once 'includes/config.php';
+require_once 'includes/db.php';
+require_once 'includes/header.php';
+
+$tag = isset($_GET['tag']) ? strtolower(trim($_GET['tag'])) : '';
+if (!$tag) die("Invalid tag");
+
+// Fetch matching posts
+$stmt = $pdo->prepare("
+  SELECT posts.*, users.username, users.avatar
+  FROM posts 
+  JOIN users ON posts.user_id = users.id
+  WHERE FIND_IN_SET(?, REPLACE(tags, ' ', '')) > 0
+  ORDER BY created_at DESC
+  LIMIT 20
+");
+$stmt->execute([$tag]);
+$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<div class="main-feed">
+  <h2>Posts tagged with #<?= htmlspecialchars($tag) ?></h2>
+
+  <?php if (count($posts) === 0): ?>
+    <p>No posts found for this tag.</p>
+  <?php else: ?>
+    <div class="post-grid">
+      <?php foreach ($posts as $post): ?>
+        <div class="post-card">
+          <h3><?= htmlspecialchars($post['title']) ?></h3>
+          <div class="author-row">
+            <img src="<?= htmlspecialchars($post['avatar']) ?>" class="avatar" />
+            <span>@<?= htmlspecialchars($post['username']) ?></span>
+          </div>
+          <div class="post-stats">
+            👁 <?= $post['views'] ?> • ❤️ <?= $post['upvotes'] ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
+</div>
+
+<?php require_once 'includes/footer.php'; ?>
