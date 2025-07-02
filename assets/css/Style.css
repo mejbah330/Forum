@@ -1,0 +1,121 @@
+/* Tailwind-like custom utility CSS */
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* --- NAVIGATION HEADER --- */
+
+.navbar {
+  background: #1e293b;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-box {
+  background: #f97316;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.logo-text {
+  color: #f97316;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.search-input {
+  background: #334155;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #f1f5f9;
+  min-width: 300px;
+}
+
+.search-input::placeholder {
+  color: #cbd5e1;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-btn {
+  color: #cbd5e1;
+  font-size: 1.2rem;
+}
+
+.nav-link {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.btn-orange {
+  background: #f97316;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+}
+
+/* --- GENERAL UI ELEMENTS --- */
+
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  color: #f1f5f9;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
+}
+
+footer {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem;
+}
