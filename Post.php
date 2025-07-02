@@ -52,6 +52,25 @@ $comments = $commentsStmt->fetchAll(PDO::FETCH_ASSOC);
       <?php endforeach; ?>
     </div>
     <div class="post-stats">
+      <?php
+$liked = false;
+if (isset($_SESSION['user'])) {
+  $checkVote = $pdo->prepare("SELECT id FROM votes WHERE user_id = ? AND post_id = ?");
+  $checkVote->execute([$_SESSION['user']['id'], $post_id]);
+  $liked = $checkVote->fetch() ? true : false;
+}
+?>
+
+<form method="post" action="vote.php" class="vote-form">
+  <input type="hidden" name="post_id" value="<?= $post_id ?>" />
+  <?php if (isset($_SESSION['user'])): ?>
+    <button class="vote-btn" name="action" value="<?= $liked ? 'unlike' : 'like' ?>">
+      <?= $liked ? '💔 Unlike' : '❤️ Like' ?>
+    </button>
+  <?php else: ?>
+    <a href="user/login.php">❤️ Login to like</a>
+  <?php endif; ?>
+</form>
       👁 <?= $post['views'] ?> views • ❤️ <?= $post['upvotes'] ?> likes
     </div>
     <div class="post-content">
