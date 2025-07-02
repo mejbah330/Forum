@@ -5,10 +5,14 @@ CREATE TABLE IF NOT EXISTS users (
   username VARCHAR(32) NOT NULL UNIQUE,
   email VARCHAR(120) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
-  avatar VARCHAR(255) DEFAULT NULL,
+  name VARCHAR(100),
+  avatar VARCHAR(255),
   bio TEXT,
+  hide_profile BOOLEAN DEFAULT 0,
   role ENUM('user','admin') DEFAULT 'user',
   points INT DEFAULT 0,
+  level INT DEFAULT 1,
+  streak INT DEFAULT 0,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
