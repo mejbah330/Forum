@@ -81,6 +81,17 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
+<?php if (isset($_SESSION['user'])): ?>
+<script>
+setTimeout(() => {
+  fetch('ajax/reading_points.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ post_id: <?= $post['id'] ?> })
+  });
+}, 15000); // 15 seconds
+</script>
+<?php endif; ?>
 </div>
 
 <?php require_once 'includes/footer.php'; ?>
