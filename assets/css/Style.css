@@ -285,3 +285,25 @@ h3 {
   font-weight: bold;
   cursor: pointer;
 }
+
+/* ---- Footer ---- */
+
+.footer {
+  background: #0f172a;
+  padding: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  border-top: 1px solid #1e293b;
+  margin-top: 2rem;
+}
+
+.footer-content p {
+  margin: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.footer-links a {
+  color: #f97316;
+  margin: 0 0.4rem;
+  font-weight: 500;
+}
