@@ -1,31 +1,26 @@
-<?php
-session_start();
-require_once 'config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DynamicForum</title>
-  <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body class="dark">
-<header class="navbar">
-  <div class="navbar-left">
-    <span class="logo-box">K</span>
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    <div class="logo-icon">K</div>
     <span class="logo-text">Knowledgechain</span>
-    <input type="text" class="search-input" placeholder="🔍 Type here to search..." />
   </div>
-  <div class="navbar-right">
-    <a href="#" class="icon-btn">🌙</a>
-    <a href="#" class="icon-btn">⚙️</a>
-    <?php if (isset($_SESSION['user'])): ?>
-      <a href="<?= SITE_URL ?>/user/profile.php" class="nav-link">Profile</a>
-      <a href="<?= SITE_URL ?>/user/logout.php" class="nav-link">Logout</a>
-    <?php else: ?>
-      <a href="<?= SITE_URL ?>/user/login.php" class="nav-link">Login</a>
-      <a href="<?= SITE_URL ?>/user/register.php" class="btn-orange">Sign Up</a>
-    <?php endif; ?>
+
+  <div class="search-bar">
+    <input type="text" placeholder="🔍 Type here to search..." />
+  </div>
+
+  <div class="header-actions">
+    <button class="btn ghost">Login</button>
+    <button class="btn solid">Sign Up</button>
   </div>
 </header>
-<main>
